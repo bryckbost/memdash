@@ -1,19 +1,19 @@
-# -*- encoding: utf-8 -*-
+# encoding: utf-8
 
 Gem::Specification.new do |gem|
-  gem.authors       = ["Brian Ryckbost", "Steve Richert"]
-  gem.email         = ["bryckbost@gmail.com", "steve.richert@gmail.com"]
-  gem.description   = %q{Gain insight into your memcached servers}
-  gem.summary       = %q{Gain insight into your memcached servers}
-  gem.homepage      = ""
+  gem.name    = "memdash"
+  gem.version = "0.0.1"
 
-  gem.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
-  gem.files         = `git ls-files`.split("\n")
-  gem.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
-  gem.name          = "memdash"
+  gem.authors     = ["Brian Ryckbost", "Steve Richert"]
+  gem.email       = ["bryckbost@gmail.com", "steve.richert@gmail.com"]
+  gem.description = "Gain insight into your memcached servers"
+  gem.summary     = "Gain insight into your memcached servers"
+  gem.homepage    = "https://github.com/bryckbost/memdash"
+
+  gem.add_development_dependency "rake", ">= 0.8.7"
+  gem.add_development_dependency "rspec", "~> 2.0"
+
+  gem.files         = `git ls-files`.split($\)
+  gem.test_files    = gem.files.grep(/^spec\//)
   gem.require_paths = ["lib"]
-  gem.version       = "0.0.1"
-
-  gem.add_development_dependency 'rake'
-  gem.add_development_dependency 'rspec', '~> 2.0'
 end
