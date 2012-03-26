@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Brian Ryckbost", "Steve Richert"]
-  gem.email         = ["bryckbost@gmail.com"]
+  gem.email         = ["bryckbost@gmail.com", "steve.richert@gmail.com"]
   gem.description   = %q{Gain insight into your memcached servers}
   gem.summary       = %q{Gain insight into your memcached servers}
   gem.homepage      = ""
