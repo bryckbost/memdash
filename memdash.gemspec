@@ -13,4 +13,7 @@ Gem::Specification.new do |gem|
   gem.name          = "memdash"
   gem.require_paths = ["lib"]
   gem.version       = "0.0.1"
+
+  gem.add_development_dependency 'rake'
+  gem.add_development_dependency 'rspec', '~> 2.0'
 end
