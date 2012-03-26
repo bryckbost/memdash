@@ -10,6 +10,8 @@ Gem::Specification.new do |gem|
   gem.summary     = "Gain insight into your memcached servers"
   gem.homepage    = "https://github.com/bryckbost/memdash"
 
+  gem.add_dependency "dalli", "~> 1.0"
+
   gem.add_development_dependency "rake", ">= 0.8.7"
   gem.add_development_dependency "rspec", "~> 2.0"
 
