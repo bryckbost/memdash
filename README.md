@@ -1,6 +1,6 @@
 # Memdash [![Build Status](https://secure.travis-ci.org/bryckbost/memdash.png)](http://travis-ci.org/bryckbost/memdash) [![Dependency Status](https://gemnasium.com/bryckbost/memdash.png)](https://gemnasium.com/bryckbost/memdash)
 
-Gain insight into your memcached servers.
+Memdash is a dashboard for your memcache.
 
 ## Installation
 

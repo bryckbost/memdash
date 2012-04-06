@@ -6,8 +6,8 @@ Gem::Specification.new do |gem|
 
   gem.authors     = ['Brian Ryckbost', 'Steve Richert']
   gem.email       = ['bryckbost@gmail.com', 'steve.richert@gmail.com']
-  gem.description = 'Gain insight into your memcached servers'
-  gem.summary     = 'Gain insight into your memcached servers'
+  gem.description = 'A dashboard for your memcache'
+  gem.summary     = 'A dashboard for your memcache'
   gem.homepage    = 'https://github.com/bryckbost/memdash'
 
   gem.add_dependency 'dalli', '~> 2.0'
