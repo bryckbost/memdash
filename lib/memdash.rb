@@ -22,15 +22,6 @@ module Memdash
 
     puts [op, key, args].inspect
   end
-
-  def fetch_without_stats(key, value, ttl)
-    val = perform_without_stats(:get, key)
-    if val.nil? && block_given?
-      val = value
-      add(key, val, ttl)
-    end
-    val
-  end
 end
 
 Dalli::Client.send(:include, Memdash)
