@@ -24,10 +24,8 @@ module Memdash
   def generate_stats(op, key, *args)
     val = perform_without_stats(:get, "memdash")
     if val.nil?
-      perform_without_stats(:add, "memdash", "BAM", self.class.memdash_ttl, {})
+      perform_without_stats(:add, "memdash", stats, self.class.memdash_ttl, {})
     end
-
-    puts [op, key, args].inspect
   end
 end
 
