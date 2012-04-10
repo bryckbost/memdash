@@ -1,4 +1,5 @@
 require "dalli"
+require "memdash/report"
 
 module Memdash
   DEFAULT_TTL = 60
@@ -16,16 +17,17 @@ module Memdash
   end
 
   def perform_with_stats(op, key, *args)
-    result = perform_without_stats(op, key, *args)
-    generate_stats(op, key, *args)
-    result
+    ret = perform_without_stats(op, key, *args)
+    resp = perform_without_stats(:get, 'memdash')
+    if !resp || resp == 'Not found'
+      generate_stats
+      perform_without_stats(:add, 'memdash', '1', self.class.memdash_ttl, nil)
+    end
+    ret
   end
 
-  def generate_stats(op, key, *args)
-    val = perform_without_stats(:get, "memdash")
-    if val.nil?
-      perform_without_stats(:add, "memdash", stats, self.class.memdash_ttl, {})
-    end
+  def generate_stats
+    Memdash::Report.create!
   end
 end
 

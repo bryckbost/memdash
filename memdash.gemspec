@@ -10,10 +10,13 @@ Gem::Specification.new do |gem|
   gem.summary     = 'A dashboard for your memcache'
   gem.homepage    = 'https://github.com/bryckbost/memdash'
 
+  gem.add_dependency 'activerecord', '~> 3.0'
   gem.add_dependency 'dalli', '~> 2.0'
 
+  gem.add_development_dependency 'database_cleaner', '~> 0.7'
   gem.add_development_dependency 'rake', '>= 0.8.7'
   gem.add_development_dependency 'rspec', '~> 2.0'
+  gem.add_development_dependency 'sqlite3'
 
   gem.files         = `git ls-files`.split($\)
   gem.test_files    = gem.files.grep(/^spec\//)
