@@ -1,4 +1,3 @@
-require 'memdash'
 # TODO Load and unload particular backends for backend-specific tests
 require 'memdash/active_record'
 
