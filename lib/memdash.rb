@@ -27,7 +27,7 @@ module Memdash
   end
 
   def generate_stats
-    Memdash::Report.create!
+    Memdash::Report.create!(:stats => stats)
   end
 end
 
