@@ -5,10 +5,6 @@ describe Memdash do
     Memdash.ttl = 2
   end
 
-  def reports_count
-    Memdash::ActiveRecord::Report.count
-  end
-
   it 'records gets' do
     expect{ dalli.get('key') }.to change{ reports_count }.by(1)
   end
