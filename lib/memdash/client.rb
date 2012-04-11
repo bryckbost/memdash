@@ -12,7 +12,7 @@ module Memdash
       resp = perform_without_stats(:get, 'memdash')
       if !resp || resp == 'Not found'
         generate_stats
-        perform_without_stats(:add, 'memdash', '1', Memdash.ttl, nil)
+        perform_without_stats(:add, 'memdash', '', Memdash.ttl, nil)
       end
       ret
     end
