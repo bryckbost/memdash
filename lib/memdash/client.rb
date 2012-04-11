@@ -10,9 +10,9 @@ module Memdash
     def perform_with_stats(op, key, *args)
       ret = perform_without_stats(op, key, *args)
       resp = perform_without_stats(:get, 'memdash')
-      if !resp || resp == 'Not found'
+      if resp.nil? || resp == 'Not found'
         generate_stats
-        perform_without_stats(:add, 'memdash', '', Memdash.ttl, nil)
+        perform_without_stats(:add, 'memdash', true, Memdash.ttl, nil)
       end
       ret
     end
