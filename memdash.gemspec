@@ -11,7 +11,8 @@ Gem::Specification.new do |gem|
   gem.homepage    = 'https://github.com/bryckbost/memdash'
 
   gem.add_dependency 'activerecord', '~> 3.0'
-  gem.add_dependency 'dalli', '~> 2.0'
+  gem.add_dependency 'dalli',        '~> 2.0'
+  gem.add_dependency 'sinatra',      '~> 1.3'
 
   gem.add_development_dependency 'database_cleaner'
   gem.add_development_dependency 'rake'
