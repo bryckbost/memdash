@@ -1,0 +1,26 @@
+html {
+  background: #efefef url(cross_scratches.png) repeat 0 0;
+  font-family: Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  color: #2a2a2a;
+}
+body {
+  padding: 0;
+  margin: 0;
+}
+header {
+  padding: 6px 20px;
+  margin-bottom: 20px;
+  background-color: rgba(255,255,255,.8);
+  border-bottom: 1px solid rgba(0,0,0,.4);
+  box-shadow: 0 1px 3px rgba(0,0,0,.4);
+}
+.container {
+  text-shadow: 0 1px rgba(255,255,255,.8);
+}
+
+footer {
+  font-size: 13px;
+  text-shadow: 0 1px rgba(255,255,255,.8);
+}
