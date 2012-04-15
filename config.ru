@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 require 'logger'
 
-require File.expand_path('../lib/memdash/server', __FILE__)
+require 'memdash/server'
 
 use Rack::ShowExceptions
 run Memdash::Server.new
