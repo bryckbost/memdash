@@ -4,7 +4,7 @@ html {
   font-size: 16px;
   font-weight: 700;
   line-height: 24px;
-  color: #2a2a2a;
+  color: #3e3e3e;
 }
 body {
   padding: 0;
@@ -14,13 +14,27 @@ header {
   text-shadow: 0 1px rgba(255,255,255,.8);
 }
 .container {
+  margin-top: 40px;
   text-shadow: 0 1px rgba(255,255,255,.8);
+}
+ol {
+  padding-bottom: 4px;
+  border-bottom: 1px solid #b0b0b0;
+  box-shadow: 0 1px 0 rgba(255,255,255,.8);
+}
+li {
+  font-weight: 300;
+}
+.count {
+  font-weight: 700;
+  font-size: 48px;
+  display: block;
+}
+.row {
+  margin-bottom: 40px;
 }
 
 footer {
   font-size: 13px;
   text-shadow: 0 1px rgba(255,255,255,.8);
-}
-.row {
-  margin-bottom: 40px;
 }
