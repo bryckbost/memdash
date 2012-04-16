@@ -10,7 +10,7 @@ module Memdash
       self.source_paths << File.join(File.dirname(__FILE__), 'templates')
 
       def create_migration_file
-        migration_template 'migration.rb', 'db/migrate/create_memdash_reports.rb'
+        migration_template 'migration.rb', 'db/migrate/create_memdash_active_record_reports.rb'
       end
     end
   end
