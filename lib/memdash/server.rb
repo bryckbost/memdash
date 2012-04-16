@@ -7,12 +7,13 @@ module Memdash
     dir = File.dirname(File.expand_path(__FILE__))
     set :views,         "#{dir}/server/views"
     set :public_folder, "#{dir}/server/public"
+
     helpers do
       include Rack::Utils
       alias_method :h, :escape_html
 
       def url_path(*path_parts)
-        [ path_prefix, path_parts ].join("/").squeeze('/')
+        [path_prefix, path_parts].join("/").squeeze('/')
       end
       alias_method :u, :url_path
 
