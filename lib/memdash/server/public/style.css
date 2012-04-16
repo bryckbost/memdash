@@ -11,7 +11,12 @@ body {
   margin: 0;
 }
 header {
+  width: 940px;
+  margin: 0 auto;
   text-shadow: 0 1px rgba(255,255,255,.8);
+}
+header h1 {
+  font-size: 24px;
 }
 .container {
   margin-top: 40px;
@@ -35,6 +40,10 @@ li {
 }
 
 footer {
+  width: 940px;
+  margin: 0 auto;
   font-size: 13px;
+  font-weight: 300;
+  text-align: right;
   text-shadow: 0 1px rgba(255,255,255,.8);
 }
