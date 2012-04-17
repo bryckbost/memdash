@@ -23,6 +23,7 @@ module Memdash
     end
 
     get "/" do
+      @last_report = Memdash::ActiveRecord::Report.last
       erb :overview, :layout => :application
     end
   end

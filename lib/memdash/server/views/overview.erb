@@ -1,7 +1,7 @@
 <section>
   <ol class="row">
-    <li class="span4"><span class="count">416</span>Current items</li>
     <li class="span4"><span class="count">6%</span>Cache miss ratio</li>
+    <li class="span4"><span class="count"><%= @last_report.stats[@last_report.stats.keys.first]["curr_items"] %></span>Current items</li>
     <li class="span4"><span class="count">6.08 MB</span>Current memory usage</li>
   </ol>
 
