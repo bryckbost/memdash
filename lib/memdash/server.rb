@@ -37,10 +37,10 @@ module Memdash
     get "/" do
       @last_report = Memdash::ActiveRecord::Report.last
       past_day = Memdash::ActiveRecord::Report.past_day
-      @gets = past_day.flat_map{|report| report.stats.map{|k, v| [report.created_at.strftime("%m-%d-%Y %I:%M%p"), v["cmd_get"].to_i]}}
-      @sets = past_day.flat_map{|report| report.stats.map{|k, v| [report.created_at.strftime("%m-%d-%Y %I:%M%p"), v["cmd_set"].to_i]}}
-      @hits = past_day.flat_map{|report| report.stats.map{|k, v| [report.created_at.strftime("%m-%d-%Y %I:%M%p"), v["get_hits"].to_i]}}
-      @misses = past_day.flat_map{|report| report.stats.map{|k, v| [report.created_at.strftime("%m-%d-%Y %I:%M%p"), v["get_misses"].to_i]}}
+      @gets = past_day.flat_map{|report| report.stats.map{|_, v| [report.created_at.strftime("%m-%d-%Y %I:%M%p"), v["cmd_get"].to_i]}}
+      @sets = past_day.flat_map{|report| report.stats.map{|_, v| [report.created_at.strftime("%m-%d-%Y %I:%M%p"), v["cmd_set"].to_i]}}
+      @hits = past_day.flat_map{|report| report.stats.map{|_, v| [report.created_at.strftime("%m-%d-%Y %I:%M%p"), v["get_hits"].to_i]}}
+      @misses = past_day.flat_map{|report| report.stats.map{|_, v| [report.created_at.strftime("%m-%d-%Y %I:%M%p"), v["get_misses"].to_i]}}
       erb :overview, :layout => :application
     end
   end
