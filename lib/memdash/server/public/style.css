@@ -57,3 +57,7 @@ footer p {
   width: 940px;
   margin: 0 auto;
 }
+
+.jqplot-target {
+  font-family: Helvetica, sans-serif; 
+}

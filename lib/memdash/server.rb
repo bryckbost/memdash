@@ -36,6 +36,11 @@ module Memdash
 
     get "/" do
       @last_report = Memdash::ActiveRecord::Report.last
+      past_day = Memdash::ActiveRecord::Report.past_day
+      @gets = past_day.map{|report| report.stats.map{|k, v| v["cmd_get"].to_i} }.flatten
+      @sets = past_day.map{|report| report.stats.map{|k, v| v["cmd_set"].to_i} }.flatten
+      @hits = past_day.map{|report| report.stats.map{|k, v| v["get_hits"].to_i} }.flatten
+      @misses = past_day.map{|report| report.stats.map{|k, v| v["get_misses"].to_i} }.flatten
       erb :overview, :layout => :application
     end
   end
