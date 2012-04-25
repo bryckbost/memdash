@@ -6,6 +6,8 @@ module Memdash
       self.table_name = :memdash_reports
 
       serialize :stats
+
+      scope :past_day, where('created_at >= :time', :time => Time.current - 1.day)
     end
   end
 end
