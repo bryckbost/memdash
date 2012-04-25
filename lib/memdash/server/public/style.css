@@ -61,3 +61,6 @@ footer p {
 .jqplot-target {
   font-family: Helvetica, sans-serif; 
 }
+.jqplot-axis {
+  font-weight: 300;
+}

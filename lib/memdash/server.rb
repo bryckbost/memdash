@@ -37,10 +37,10 @@ module Memdash
     get "/" do
       @last_report = Memdash::ActiveRecord::Report.last
       past_day = Memdash::ActiveRecord::Report.past_day
-      @gets = past_day.map{|report| report.stats.map{|k, v| v["cmd_get"].to_i} }.flatten
-      @sets = past_day.map{|report| report.stats.map{|k, v| v["cmd_set"].to_i} }.flatten
-      @hits = past_day.map{|report| report.stats.map{|k, v| v["get_hits"].to_i} }.flatten
-      @misses = past_day.map{|report| report.stats.map{|k, v| v["get_misses"].to_i} }.flatten
+      @gets = past_day.flat_map{|report| report.stats.map{|k, v| [report.created_at.strftime("%m-%d-%Y %I:%M%p"), v["cmd_get"].to_i]}}
+      @sets = past_day.flat_map{|report| report.stats.map{|k, v| [report.created_at.strftime("%m-%d-%Y %I:%M%p"), v["cmd_set"].to_i]}}
+      @hits = past_day.flat_map{|report| report.stats.map{|k, v| [report.created_at.strftime("%m-%d-%Y %I:%M%p"), v["get_hits"].to_i]}}
+      @misses = past_day.flat_map{|report| report.stats.map{|k, v| [report.created_at.strftime("%m-%d-%Y %I:%M%p"), v["get_misses"].to_i]}}
       erb :overview, :layout => :application
     end
   end
