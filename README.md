@@ -2,7 +2,7 @@
 
 A dashboard for your memcache. **This is a work in progress,** but aims to provide a little insight into your application's memcached servers.
 
-![Screenshot of memdash](screenshot.png)
+![Screenshot of memdash](https://github.com/bryckbost/memdash/raw/front-end/screenshot.png)
 
 ## Installation
 
