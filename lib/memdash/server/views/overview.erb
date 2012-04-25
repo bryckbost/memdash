@@ -1,8 +1,8 @@
 <section>
   <ol class="row">
-    <li class="span4"><span class="count">6%</span>Cache miss ratio</li>
-    <li class="span4"><span class="count"><%= @last_report.stats[@last_report.stats.keys.first]["curr_items"] %></span>Current items</li>
-    <li class="span4"><span class="count">6.08 MB</span>Current memory usage</li>
+    <li class="span4"><span class="count"><%= miss_ratio_percentage(@last_report.stats[@last_report.stats.keys.first]["get_hits"].to_f, @last_report.stats[@last_report.stats.keys.first]["get_misses"].to_f).round(2) %>%</span>Cache miss ratio</li>
+    <li class="span4"><span class="count"><%= @last_report.stats[@last_report.stats.keys.first]["curr_items"] %></span>Current items in memcache</li>
+    <li class="span4"><span class="count"><%= (@last_report.stats[@last_report.stats.keys.first]["bytes"].to_i / 1024.0 / 1024.0).round(2) %>/<%= @last_report.stats[@last_report.stats.keys.first]["limit_maxbytes"].to_i / 1024 / 1024 %> MB</span>Current memory usage</li>
   </ol>
 
   <div class="row">

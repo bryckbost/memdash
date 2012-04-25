@@ -20,6 +20,18 @@ module Memdash
       def path_prefix
         request.env['SCRIPT_NAME']
       end
+
+      def hit_ratio(hits, misses)
+        hits / (hits + misses)
+      end
+
+      def miss_ratio(hits, misses)
+        1 - hit_ratio(hits, misses)
+      end
+
+      def miss_ratio_percentage(hits, misses)
+        miss_ratio(hits, misses) * 100
+      end
     end
 
     get "/" do
