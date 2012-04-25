@@ -10,7 +10,7 @@ Add this line to your application's Gemfile:
 
     gem 'memdash'
 
-And then execute:
+And then from the console, run:
 
     $ bundle
 
@@ -20,7 +20,34 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+To begin using Memdash, run the following:
+
+    $ rails g memdash:active_record
+    $ rake db:migrate
+
+The generator will create a table (`memdash_reports`) to store a serialized column of statistics from your cache servers.
+
+From this point onward, any calls to the cache should generate statistics and shove them into that table. But don't worry, Memdash won't actually write to the database on every call. Instead, it caches the stats within memcache for a minute and writes when it needs to.
+
+To view the dashboard, you'll need to add `require 'memdash/server'` to `config/routes.rb` and mount a server at an endpoint. It might look something like this:
+
+    require 'memdash/server'
+
+    MyRailsApp::Application.routes.draw do
+      …other routes…
+
+      mount Memdash::Server.new, :at => "/memdash"
+    end
+
+## The Why of Memdash
+
+Memdash is meant to give you insight into your memcached setup without adding overhead to your application. I found it useful when deploying apps to Heroku where the memcached add-on is a bit of a black box. Stuff goes in, stuff comes out. Hopefully, it's being used effectively.
+
+## The How of Memdash
+
+Building on top of [Dalli](https://github.com/mperham/dalli), Memdash hooks into Dalli's chokepoint method to generate statistics.
+
+When a call to the cache is triggered, `memdash` performs that operation and does a `get` for the key `memdash`. If the returned value is not found, Memdash then writes the cache statistics to the database and `add`s the `memdash` key with a default time to live of 60 seconds.
 
 ## Contributing
 
