@@ -46,6 +46,7 @@ module Memdash
       @engine_maxbytes = past_day.flat_map{|report| report.stats.map{|_, v| [report.created_at.strftime("%m-%d-%Y %I:%M%p"), (v["engine_maxbytes"].to_i / 1024.0 / 1024.0).round(2)]}}
       @bytes = past_day.flat_map{|report| report.stats.map{|_, v| [report.created_at.strftime("%m-%d-%Y %I:%M%p"), (v["bytes"].to_i / 1024.0 / 1024.0).round(2)]}}
       @current_items = past_day.flat_map{|report| report.stats.map{|_, v| [report.created_at.strftime("%m-%d-%Y %I:%M%p"), v["curr_items"].to_i]}}
+      @evictions = past_day.flat_map{|report| report.stats.map{|_, v| [report.created_at.strftime("%m-%d-%Y %I:%M%p"), v["evictions"].to_i]}}
       erb :overview, :layout => :application
     end
   end
