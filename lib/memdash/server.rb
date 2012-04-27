@@ -41,6 +41,8 @@ module Memdash
       @sets = past_day.flat_map{|report| report.stats.map{|_, v| [report.created_at.strftime("%m-%d-%Y %I:%M%p"), v["cmd_set"].to_i]}}
       @hits = past_day.flat_map{|report| report.stats.map{|_, v| [report.created_at.strftime("%m-%d-%Y %I:%M%p"), v["get_hits"].to_i]}}
       @misses = past_day.flat_map{|report| report.stats.map{|_, v| [report.created_at.strftime("%m-%d-%Y %I:%M%p"), v["get_misses"].to_i]}}
+      @delete_hits = past_day.flat_map{|report| report.stats.map{|_, v| [report.created_at.strftime("%m-%d-%Y %I:%M%p"), v["delete_hits"].to_i]}}
+      @delete_misses = past_day.flat_map{|report| report.stats.map{|_, v| [report.created_at.strftime("%m-%d-%Y %I:%M%p"), v["delete_misses"].to_i]}}
       @engine_maxbytes = past_day.flat_map{|report| report.stats.map{|_, v| [report.created_at.strftime("%m-%d-%Y %I:%M%p"), (v["engine_maxbytes"].to_i / 1024.0 / 1024.0).round(2)]}}
       @bytes = past_day.flat_map{|report| report.stats.map{|_, v| [report.created_at.strftime("%m-%d-%Y %I:%M%p"), (v["bytes"].to_i / 1024.0 / 1024.0).round(2)]}}
       @current_items = past_day.flat_map{|report| report.stats.map{|_, v| [report.created_at.strftime("%m-%d-%Y %I:%M%p"), v["curr_items"].to_i]}}
