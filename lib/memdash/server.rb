@@ -32,6 +32,10 @@ module Memdash
       def miss_ratio_percentage(hits, misses)
         miss_ratio(hits, misses) * 100
       end
+
+      def hit_ratio_percentage(hits, misses)
+        hit_ratio(hits, misses) * 100
+      end
     end
 
     get "/" do

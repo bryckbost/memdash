@@ -1,6 +1,6 @@
 <div class="hero-stats">
   <ol class="row">
-    <li class="span4"><span class="count"><%= miss_ratio_percentage(@last_report.stats.map{|_, v| v["get_hits"].to_f}.sum, @last_report.stats.map{|_, v| v["get_misses"].to_f}.sum).round(2) %>%</span>Cache miss ratio</li>
+    <li class="span4"><span class="count"><%= hit_ratio_percentage(@last_report.stats.map{|_, v| v["get_hits"].to_f}.sum, @last_report.stats.map{|_, v| v["get_misses"].to_f}.sum).round(2) %>%</span>Cache hit rate</li>
     <li class="span4"><span class="count"><%= @last_report.stats.map{|_, v| v["curr_items"]}.sum %></span>Current items in memcache</li>
     <li class="span4"><span class="count"><%= (@last_report.stats.map{|_,v| v["bytes"].to_i}.sum / 1024.0 / 1024.0).round(2) %>/<%= @last_report.stats.map{|_,v| v["engine_maxbytes"].to_i}.sum / 1024 / 1024 %> MB</span>Current memory usage</li>
   </ol>  
