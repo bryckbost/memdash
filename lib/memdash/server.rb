@@ -1,6 +1,6 @@
 require 'sinatra/base'
 require 'erb'
-require 'memdash/active_record'
+require 'memdash/adapters/active_record'
 
 module Memdash
   class Server < Sinatra::Base
@@ -39,8 +39,8 @@ module Memdash
     end
 
     get "/" do
-      @last_report = Memdash::ActiveRecord::Report.last
-      past_day = Memdash::ActiveRecord::Report.past_day
+      @last_report = Memdash::Adapters::ActiveRecord::Report.last
+      past_day = Memdash::Adapters::ActiveRecord::Report.past_day
       @gets = past_day.flat_map{|report| report.stats.map{|_, v| [report.created_at.strftime("%m-%d-%Y %I:%M%p"), v["cmd_get"].to_i]}}
       @sets = past_day.flat_map{|report| report.stats.map{|_, v| [report.created_at.strftime("%m-%d-%Y %I:%M%p"), v["cmd_set"].to_i]}}
       @hits = past_day.flat_map{|report| report.stats.map{|_, v| [report.created_at.strftime("%m-%d-%Y %I:%M%p"), v["get_hits"].to_i]}}

@@ -1,8 +1,8 @@
-require 'memdash/active_record'
+require 'memdash/adapters/active_record'
 
 module ActiveRecordHelpers
   def reports_count
-    Memdash::ActiveRecord::Report.count
+    Memdash::Adapters::ActiveRecord::Report.count
   end
 end
 

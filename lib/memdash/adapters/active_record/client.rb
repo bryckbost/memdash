@@ -1,13 +1,15 @@
-require 'memdash/active_record/report'
+require 'memdash/adapters/active_record/report'
 
 module Memdash
-  module ActiveRecord
-    module Client
-      def generate_stats
-        Memdash::ActiveRecord::Report.create!(:stats => stats)
+  module Adapters
+    module ActiveRecord
+      module Client
+        def generate_stats
+          Memdash::Adapters::ActiveRecord::Report.create!(:stats => stats)
+        end
       end
     end
   end
 end
 
-Dalli::Client.send(:include, Memdash::ActiveRecord::Client)
+Dalli::Client.send(:include, Memdash::Adapters::ActiveRecord::Client)
