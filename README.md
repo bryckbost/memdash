@@ -39,11 +39,13 @@ To view the dashboard, you'll need to add `require 'memdash/server'` to `config/
       mount Memdash::Server.new, :at => "/memdash"
     end
 
-## Why Did I Build This?
+## What's the point?
 
-Memdash is meant to give you insight into your memcached setup without adding overhead to your application. I found it useful when deploying apps to Heroku where the memcached add-on is a bit of a black box. Stuff goes in, stuff comes out. Hopefully, it's being used effectively.
+Memdash is meant to give you insight into your memcached setup without adding overhead to your application or relying on a background process.
 
-## How Does it Work???
+I find it useful when deploying apps to Heroku, where the memcached add-on is a bit of a black box. Stuff goes in, stuff comes out. Hopefully, it's being used effectively. Memdash could fill the gap between not having any statistics and having to send custom data to Scout, New Relic or statsd.
+
+## How Does it Work?
 
 Building on top of [Dalli](https://github.com/mperham/dalli), Memdash hooks into Dalli's chokepoint method to generate statistics.
 
