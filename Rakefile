@@ -4,6 +4,7 @@ require 'bundler/gem_tasks'
 require 'rspec/core/rake_task'
 
 ADAPTERS = %w(active_record)
+ADAPTERS = %w(active_record mongo_mapper)
 
 task :default => :test
 
