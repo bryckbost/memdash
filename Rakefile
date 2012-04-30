@@ -1,9 +1,11 @@
 #!/usr/bin/env rake
 
-require 'bundler/gem_tasks'
+require 'bundler/gem_helper'
 require 'rspec/core/rake_task'
 
-ADAPTERS = %w(active_record)
+Bundler::GemHelper.install_tasks(:name => 'memdash')
+Bundler::GemHelper.install_tasks(:name => 'memdash-activerecord')
+
 ADAPTERS = %w(active_record mongo_mapper)
 
 task :default => :test
