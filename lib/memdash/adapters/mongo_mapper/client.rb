@@ -5,7 +5,7 @@ module Memdash
     module MongoMapper
       module Client
         def generate_stats
-          Memdash::Adapters::MongoMapper::Report.create!(:stats => stats)
+          Memdash::Adapters::MongoMapper::Report.create(:stats => stats)
         end
       end
     end
