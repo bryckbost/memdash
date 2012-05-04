@@ -5,6 +5,7 @@ require 'rspec/core/rake_task'
 
 Bundler::GemHelper.install_tasks(:name => 'memdash')
 Bundler::GemHelper.install_tasks(:name => 'memdash-activerecord')
+Bundler::GemHelper.install_tasks(:name => 'memdash-mongo_mapper')
 
 ADAPTERS = %w(active_record mongo_mapper)
 
