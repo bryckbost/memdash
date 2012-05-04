@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Memdash by bryckbost</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Memdash</h1>
+        <p>Gain insight into your memcache</p>
+        <p class="view"><a href="https://github.com/bryckbost/memdash">View the Project on GitHub <small>bryckbost/memdash</small></a></p>
+        <ul>
+          <li><a href="https://github.com/bryckbost/memdash/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/bryckbost/memdash/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/bryckbost/memdash">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>Memdash</h1>
+
+<p>A dashboard for your memcache.</p>
+
+<p><img src="https://github.com/bryckbost/memdash/raw/front-end/screenshot.png" alt="Screenshot of memdash"></p>
+
+<h2>Installation</h2>
+
+<p>Add this line to your application's Gemfile:</p>
+
+<pre><code>gem 'memdash-activerecord'
+</code></pre>
+
+<p>And then from the console, run:</p>
+
+<pre><code>$ bundle
+</code></pre>
+
+<p>Or install it yourself as:</p>
+
+<pre><code>$ gem install memdash-activerecord
+$ gem install memdash-mongo_mapper
+</code></pre>
+
+<h2>Usage</h2>
+
+<p>To begin using Memdash with ActiveRecord, run the following:</p>
+
+<pre><code>$ rails g memdash:active_record
+$ rake db:migrate
+</code></pre>
+
+<p>The generator will create a table (<code>memdash_reports</code>) to store a serialized column of statistics from your cache servers.</p>
+
+<p>If you're using it with MongoMapper, there's no extra setup required.</p>
+
+<p>From this point onward, any calls to the cache should generate statistics and shove them into that table. But don't worry, Memdash won't actually write to the database on every call. Instead, it caches the stats within memcache for a minute and writes when it needs to.</p>
+
+<p>To view the dashboard, you'll need to add <code>require 'memdash/server'</code> to <code>config/routes.rb</code> and mount a server at an endpoint. It might look something like this:</p>
+
+<pre><code>require 'memdash/server'
+
+MyRailsApp::Application.routes.draw do
+  …other routes…
+
+  mount Memdash::Server.new, :at =&gt; "/memdash"
+end
+</code></pre>
+
+<h2>What's the point?</h2>
+
+<p>Memdash is meant to give you insight into your memcached setup without adding overhead to your application or relying on a background process.</p>
+
+<p>I find it useful when deploying apps to Heroku, where the memcached add-on is a bit of a black box. Stuff goes in, stuff comes out. Hopefully, it's being used effectively. Memdash could fill the gap between not having any statistics and having to send custom data to Scout, New Relic or statsd.</p>
+
+<h2>How Does it Work?</h2>
+
+<p>Building on top of <a href="https://github.com/mperham/dalli">Dalli</a>, Memdash hooks into Dalli's chokepoint method to generate statistics.</p>
+
+<p>When a call to the cache is triggered, <code>memdash</code> performs that operation and does a <code>get</code> for the key <code>memdash</code>. If the returned value is not found, Memdash then writes the cache statistics to the database and <code>add</code>s the <code>memdash</code> key with a default time to live of 60 seconds.</p>
+
+<h2>Contributing</h2>
+
+<ol>
+<li>Fork it</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am 'Added some feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create new Pull Request</li>
+</ol>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/bryckbost">bryckbost</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
