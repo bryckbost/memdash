@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |gem|
   gem.name    = 'memdash-mongo_mapper'
-  gem.version = '0.0.1'
+  gem.version = '0.1.0'
 
   gem.authors     = ['Brian Ryckbost']
   gem.email       = 'bryckbost@gmail.com'

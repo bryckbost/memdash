@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |gem|
   gem.name    = 'memdash-activerecord'
-  gem.version = '0.0.1'
+  gem.version = '0.1.0'
 
   gem.authors     = ['Brian Ryckbost', 'Steve Richert']
   gem.email       = 'bryckbost@gmail.com'
