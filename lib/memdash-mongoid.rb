@@ -1,0 +1,1 @@
+require 'memdash/adapters/mongoid'
