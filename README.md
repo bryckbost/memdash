@@ -1,31 +1,41 @@
 # Memdash [![Build Status](https://secure.travis-ci.org/bryckbost/memdash.png)](http://travis-ci.org/bryckbost/memdash) [![Dependency Status](https://gemnasium.com/bryckbost/memdash.png)](https://gemnasium.com/bryckbost/memdash)
 
-A dashboard for your memcache. **This is a work in progress,** but aims to provide a little insight into your application's memcached servers.
+A dashboard for your memcache.
 
 ![Screenshot of memdash](https://github.com/bryckbost/memdash/raw/front-end/screenshot.png)
 
-## Installation
+## Installation and Usage with the Supported ORMs
 
-Add this line to your application's Gemfile:
+Memdash supports the following backends:
 
-    gem 'memdash'
+* ActiveRecord
+* MongoMapper
+* Mongoid
 
-And then from the console, run:
+### ActiveRecord
 
-    $ bundle
+To begin using Memdash, add the gem to your Gemfile and run `bundle`:
 
-Or install it yourself as:
+    gem 'memdash-activerecord'
 
-    $ gem install memdash
-
-## Usage
-
-To begin using Memdash, run the following:
+Once that's been done, run the generator and migration with:
 
     $ rails g memdash:active_record
     $ rake db:migrate
 
 The generator will create a table (`memdash_reports`) to store a serialized column of statistics from your cache servers.
+
+### MongoMapper
+
+All you need to do is add the gem to your Gemfile and run `bundle`:
+
+    gem 'memdash-mongo_mapper'
+
+### Mongoid
+
+Add the gem to your Gemfile and run `bundle`:
+
+    gem 'memdash-mongoid'
 
 From this point onward, any calls to the cache should generate statistics and shove them into that table. But don't worry, Memdash won't actually write to the database on every call. Instead, it caches the stats within memcache for a minute and writes when it needs to.
 
