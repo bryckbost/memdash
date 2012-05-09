@@ -1,6 +1,6 @@
 # Memdash [![Build Status](https://secure.travis-ci.org/bryckbost/memdash.png)](http://travis-ci.org/bryckbost/memdash) [![Dependency Status](https://gemnasium.com/bryckbost/memdash.png)](https://gemnasium.com/bryckbost/memdash)
 
-A dashboard for your memcache.
+A dashboard for your memcache, making use of your applications backend to store historical data.
 
 ![Screenshot of memdash](https://github.com/bryckbost/memdash/raw/front-end/screenshot.png)
 
